@@ -10,7 +10,7 @@ function App() {
   const [isFull,setIsFull] = useState(false)
   return (
       <AnimatePresence initial = {false}>
-      <div className ="flex w-screen min-h-screen flex-col items-center justify-center relative bg-primary pb-20" >
+      <div className ="flex min-w-screen min-h-screen flex-col items-center justify-center relative bg-primary" >
         {/*NavBar*/}
         <nav className = "w-full px-3 z-50 fixed inset-x-0 top-2 flex justify-center items-center">
           <div className="w-full  bg-navBar p-4 rounded-2xl flex items-center">
@@ -37,19 +37,27 @@ function App() {
               </a>
               <a 
               className = "text-base text-textBase font-medium hover:text-slate-100 cursor-pointer duration-100 ease-in-out"
-              href = "contact"
+              href = "#contact"
               >
                 Contact
               </a>
             </div>
             </div>
-            <div className = "block md:hidden ml-auto cursor-pointer hover:text-slate-100 cursor-pointer duration-100 ease-in-out"
+            <motion.div 
+            whileTap = {{scale :0.5}}
+            className = "block md:hidden ml-auto  hover:text-slate-100 cursor-pointer duration-100 ease-in-out"
             onClick = {()=>setIsFull(!isFull)}
             >
                 <IoMenu className = "text-2xl text-textBase"/>
-            </div>
+            </motion.div>
             {isFull && (
-              <div className = "p-4 w-275 bg-navBar rounded-lg fixed top-24 right-16 flex flex-col items-center justify-evenly gap-6"
+              <motion.div 
+              initial = {{opacity: 0, scale:1}}
+              animate={{opacity:1, scale:1.1}}
+              exit = {{opacity :0, scale:0.5}}
+              transition = {{delay: "0.1s",type:"spring"}}
+
+              className = "p-4 w-275 bg-navBar rounded-lg fixed top-24 right-16 flex flex-col items-center justify-evenly gap-6"
               >
               <a 
               className = " text-base text-textBase font-medium hover:text-slate-100 cursor-pointer duration-100 ease-in-out"
@@ -74,13 +82,13 @@ function App() {
               </a>
               <a 
               className = "text-base text-textBase font-medium hover:text-slate-100 cursor-pointer duration-100 ease-in-out"
-              href = "#projects"
+              href = "#contact"
               onClick = {()=>setIsFull(false)}
               >
                 
                 Contact
               </a>
-              </div>
+              </motion.div>
             )}
           </div>
         </nav>
@@ -102,7 +110,12 @@ function App() {
         <main className = "w-[80%] wt-5">
               <section className="w-full grid grid-cols-1  gap-4 my-24"
               id = "about">
-                <div className = "w-420 h-420 flex flex-col items-center justify-center">
+                <motion.div 
+                initial = {{opacity: 0, scale:1}}
+                animate={{opacity:1, scale:1.1}}
+                exit = {{opacity :0, scale:0.5}}
+                transition = {{delay: "0.1s",type:"spring"}}
+                className = "w-420 h-420 flex flex-col items-center justify-center">
                   <p className = "break-normal w-full text-lg text-textBase text-center">
                     I a third-year Computer Science {`(Honors)`} student at the University of Manitoba,
                     currently seeking an internship/co-op position as a web developer.
@@ -110,7 +123,7 @@ function App() {
                    <p className = "break-normal w-full text-lg text-textBase text-center">
                    I have experience using HTML, CSS, JavaScript, ReactJS, TailwindCSS, MongoDB, Express, FireBase, Google Tag Manager and AWS.
                    </p>
-                </div>
+                </motion.div>
               </section>
               <section>
                 <VerticalTimeline>
@@ -139,11 +152,11 @@ function App() {
               </section>
               <section className = "flex flex-wrap items-center justify-evenly my-24 gap-4" id="projects">
                 {projects && projects.map((n)=>(
-                    <div key = {n.id}className='border border-zinc-800 rounded-md p-2 min-w-[275px] md:max-w-[275px]hover:border-zinc-600 duration-100 ease-in-out'>
+                    <div key = {n.id}className='border border-zinc-800 rounded-md p-2 min-w-[275px] md:max-w-[275px] hover:border-zinc-600 duration-100 ease-in-out'>
                     <p className='text-md text-textBase font-medium uppercase'>
                       {n.name.length >25?`${n.name.slice(0,25)}...`:n.name}
                     </p>
-                    <img src={n.imgSrc}alt="Project Capture" className="w-full h-full object-cover rounded-md my-4"/>
+                    {n.imageSrc}
                     <div classNme="flex flex-1 items-center justify-center">
                       <p className = "text-lg text-gray-300">
                         
@@ -164,14 +177,15 @@ function App() {
                   
                   
               </section>
-              <p className = "text-2x text-gray-400 capitalize">Contact</p>
+              
               <section id = "contact" className="flex flex-col items-center justify-center w-full my-24">
+              <p className = "text-2x text-gray-400 capitalize">Contact Me</p>
                 {contact && contact.map((n)=>(
                   <div key = {n.id}className = "flex items-center justify-center w-full my-4 flex-wrap gap-4">
-                  <a href ={n.link} className = "w-full md:w-auto px-3 md:px-5 py-5 border border-zinc-800 rounded-2xl hover:border-zinc 600 duration 100 ease-in-out curser-pointer flex items-center justify-center gap-3">
+                  <motion.a whileTap = {{scale :0.5}} href ={n.link} className = "w-full md:w-[275px] px-3 md:px-5 py-5 border border-zinc-800 rounded-2xl hover:border-zinc-600 duration-100 ease-in-out curser-pointer flex items-center justify-center gap-3">
                       {n.img}
                       <p className = "text-lg text-textBase">{n.name}</p>
-                  </a>
+                  </motion.a>
                 </div>
                 ))}
                 
