@@ -48,7 +48,7 @@ export const projects = [
     {
         id:1,
         name:'Air Quality (React)',
-        imageSrc: <img src={airq}alt="Project Capture" className="w-full h-full object-cover rounded-md my-4"/>,
+        imageSrc: <img src={airq}alt="Project Capture" className="w-[250px] h-[250px] object-cover rounded-md my-4"/>,
         tools:"ReactJS, CSS, OpenWeather",
         link:"https://github.com/omeizan/react-air-q"
 
@@ -56,7 +56,7 @@ export const projects = [
     {
         id:2,
         name:'3D Shoe Csutomizer (React)',
-        imageSrc:<img src={shoe}alt="Project Capture" className="w-full h-full object-cover rounded-md my-4"/>,
+        imageSrc:<img src={shoe}alt="Project Capture" className="w-[250px] h-[250px] object-cover rounded-md my-4"/>,
         tools:"ReactJS, CSS, Three.js",
         link:"https://github.com/omeizan/react-jordan1-Customizer"
 
@@ -64,7 +64,7 @@ export const projects = [
     {
         id:3,
         name:'Markup Editor (React)',
-        imageSrc: <img src={markup}alt="Project Capture" className="w-full h-full object-cover rounded-md my-4"/>,
+        imageSrc: <img src={markup}alt="Project Capture" className="w-[250px] h-[250px] object-cover rounded-md my-4"/>,
         tools:"ReactJS, CSS, HTML Canvas",
         link:"https://github.com/omeizan/react-editor"
 
@@ -72,7 +72,7 @@ export const projects = [
     {
         id:4,
         name:'Portfolio Website (React)',
-        imageSrc: <img src={port}alt="Project Capture" className="w-full h-full object-cover rounded-md my-4"/>,
+        imageSrc: <img src={port}alt="Project Capture" className="w-[250px] h-[250px] object-cover rounded-md my-4"/>,
         tools:"ReactJS, TailwindCSS, Spline",
         link:"https://github.com/omeizan/3dportfolio"
 
